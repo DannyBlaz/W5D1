@@ -4,6 +4,15 @@ end
 
 class Array
   def hash
+    return 0 if self.empty?
+    an = []
+    self.each do |ele|
+      # if ele.is_a?(Array)
+      #   ele.each {|e| return e.hash}
+      # else
+        an << ele.hash
+    end
+    an
   end
 end
 

@@ -9,6 +9,7 @@ class MaxIntSet
   end
 
   def include?(num)
+    
   end
 
   private
@@ -27,12 +28,27 @@ class IntSet
   end
 
   def insert(num)
+    new_num = num % num_buckets
+    if !self.include?(num)
+      @store[new_num] << num
+    end
   end
 
   def remove(num)
+    new_idx = num % num_buckets
+    @store.delete(@store[new_idx])
   end
 
   def include?(num)
+    temp = false
+    @store.each do |row|
+      row.each do |ele|
+        if num == ele
+          temp = true
+        end
+      end
+    end
+    return temp
   end
 
   private
